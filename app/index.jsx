@@ -5,13 +5,17 @@ import { FontAwesome } from "@expo/vector-icons";
 // prettier-ignore
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
+import { Link } from "expo-router";
+import { useTheme } from "./context/ThemeContext";
 
 const Home = () => {
   const openLink = (url) => {
     Linking.openURL(url);
   };
+
+  const { color } = useTheme();
   return (
-    <View style={style.container}>
+    <View style={(style.container, { backgroundColor: color.background })}>
       <View style={style.userLayout}>
         <Image
           source={require("../assets/images/fake.jpg")}
@@ -22,24 +26,33 @@ const Home = () => {
           style={style.background}
         />
       </View>
-      <Text style={style.name}>Naphat Seehawong</Text>
+      <Text style={[style.name, { color: color.text }]}>Naphat Seehawong</Text>
       <View style={style.courseLayout}>
         {/* prettier-ignore */}
-        <Text style={style.course}>
+        <Text style={[style.course, { color: color.text }]}>
           `code | health | fun | year4 | iPhone11`
         </Text>
       </View>
 
       {/* information */}
       <View style={style.informationWrapper}>
-        <Text style={style.informationLabel}>information</Text>
-        <View style={style.information}>
+        <Text
+          style={[
+            style.informationLabel,
+            { color: color.text, backgroundColor: color.background },
+          ]}
+        >
+          information
+        </Text>
+        <View style={[style.information]}>
           {/* <Text style={style.title}>Naphat Seehawong</Text> */}
-          <Text style={style.titleInformation}>StudentID: 653450508-7</Text>
-          <Text style={style.titleInformation}>
+          <Text style={[style.titleInformation, { color: color.text }]}>
+            StudentID: 653450508-7
+          </Text>
+          <Text style={[style.titleInformation, { color: color.text }]}>
             Major: Computer and Information Science
           </Text>
-          <Text style={style.titleInformation}>
+          <Text style={[style.titleInformation, { color: color.text }]}>
             university: Khon Kean University
           </Text>
         </View>
@@ -47,9 +60,17 @@ const Home = () => {
 
       {/* Programming Languages */}
       <View style={style.skillWrapper}>
-        <Text style={style.skillLabel}>Programming Languages</Text>
+        <Text
+          style={[
+            style.skillLabel,
+            { color: color.text },
+            { backgroundColor: color.background },
+          ]}
+        >
+          Programming Languages
+        </Text>
         <View style={style.titleSkill}>
-          <Text style={style.skillText}>
+          <Text style={[style.skillText, { color: color.text }]}>
             HTML | CSS | Tailwind | Typescript | Javascript
           </Text>
         </View>
@@ -57,9 +78,17 @@ const Home = () => {
 
       {/* Frontend Framework */}
       <View style={style.frameworkWrapper}>
-        <Text style={style.frameworkLabel}>Frontend Framework</Text>
+        <Text
+          style={[
+            style.frameworkLabel,
+            { color: color.text },
+            { backgroundColor: color.background },
+          ]}
+        >
+          Frontend Framework
+        </Text>
         <View style={style.titleFramework}>
-          <Text style={style.frameworkText}>
+          <Text style={[style.frameworkText, { color: color.text }]}>
             React.js | React Native | Next.js
           </Text>
         </View>
@@ -67,38 +96,68 @@ const Home = () => {
 
       {/* Database */}
       <View style={style.databaseWrapper}>
-        <Text style={style.databaseLabel}>Database</Text>
+        <Text
+          style={[
+            style.databaseLabel,
+            { color: color.text },
+            { backgroundColor: color.background },
+          ]}
+        >
+          Database
+        </Text>
         <View style={style.titleDatabase}>
-          <Text style={style.databaseText}>MongoDB | MySQL | Firebase</Text>
+          <Text style={[style.databaseText, { color: color.text }]}>
+            MongoDB | MySQL | Firebase
+          </Text>
         </View>
       </View>
 
       {/* Version Control */}
       <View style={style.versionControlWrapper}>
-        <Text style={style.versionControlLabel}>Version Control</Text>
+        <Text
+          style={[
+            style.versionControlLabel,
+            { color: color.text },
+            { backgroundColor: color.background },
+          ]}
+        >
+          Version Control
+        </Text>
         <View style={style.titleVersionControl}>
-          <Text style={style.versionControlText}>Git | Github | GitLab</Text>
+          <Text style={[style.versionControlText, { color: color.text }]}>
+            Git | Github | GitLab
+          </Text>
         </View>
       </View>
 
       {/* Soft Skills */}
       <View style={style.softSkillsWrapper}>
-        <Text style={style.softSkillsLabel}>Soft Skills</Text>
+        <Text
+          style={[
+            style.softSkillsLabel,
+            { color: color.text },
+            { backgroundColor: color.background },
+          ]}
+        >
+          Soft Skills
+        </Text>
         <View style={style.titleSoftSkills}>
-          <Text style={style.softSkillsText}>
+          <Text style={[style.softSkillsText, { color: color.text }]}>
             - Problem-solving & Debugging
           </Text>
           {/* prettier-ignore */}
-          <Text style={style.softSkillsText}>
+          <Text style={[style.softSkillsText, { color: color.text }]}>
             - Teamwork & Collaboration
           </Text>
-          <Text style={style.softSkillsText}>
+          <Text style={[style.softSkillsText, { color: color.text }]}>
             - Communication & Adaptability
           </Text>
         </View>
       </View>
-      <Text style={style.socialNetworkLayout}>`My SocialNetwork`</Text>
-      <Text style={style.socialText}>
+      <Text style={[style.socialNetworkLayout, { color: color.text }]}>
+        `My SocialNetwork`
+      </Text>
+      <Text style={[style.socialText, { color: color.text }]}>
         `Line | GitHub | Facebook | Instagram | Discord`
       </Text>
       <View style={style.buttonContainer}>
@@ -146,6 +205,9 @@ const Home = () => {
           <MaterialCommunityIcons name="discord" size={20} color="#fff" />
         </TouchableOpacity>
       </View>
+      <Link href="/about" style={style.button}>
+        <Text style={style.textAbout}>About subject</Text>
+      </Link>
     </View>
   );
 };
@@ -158,7 +220,7 @@ const style = StyleSheet.create({
 
   userLayout: {
     position: "relative",
-    height: 200, // หรือมากกว่านี้ก็ได้ แล้วแต่ background
+    height: 200,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -477,6 +539,16 @@ const style = StyleSheet.create({
     paddingVertical: 12,
     alignItems: "center",
     borderRadius: 70,
+  },
+
+  // button | About us
+  button: {
+    marginTop: 27,
+    padding: 10,
+    paddingLeft: 25,
+    // height: 150,
+    backgroundColor: "#007BFF",
+    color: "#fff",
   },
 });
 
