@@ -7,7 +7,7 @@ function StackLayout() {
   const { isDarkMode, toggleTheme, color } = useTheme();
   return (
     <>
-      // StatusBar มันกลายเป็นสีดำหลังใช้งาน ToggleTheme
+      {/* StatusBar มันกลายเป็นสีดำหลังใช้งาน ToggleTheme */}
       <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
       <Stack
         screenOptions={{
@@ -24,12 +24,26 @@ function StackLayout() {
           name="index"
           options={{ title: "Profile", headerRight: () => <ThemeToggle /> }}
         />
+
+        {/* prettier-ignore */}
+        <Stack.Screen 
+          name="about" 
+          options={{title: "About us",headerRight: () => <ThemeToggle /> }}
+        />
+
         <Stack.Screen
-          name="about"
-          options={{
-            title: "About subject",
-            headerRight: () => <ThemeToggle />,
-          }}
+          name="book"
+          options={{ title: "Books", headerRight: () => <ThemeToggle /> }}
+        />
+
+        <Stack.Screen
+          name="signup"
+          options={{ title: "Register", headerRight: () => <ThemeToggle /> }}
+        />
+
+        <Stack.Screen
+          name="signin"
+          options={{ title: "Welcome", headerRight: () => <ThemeToggle /> }}
         />
       </Stack>
     </>

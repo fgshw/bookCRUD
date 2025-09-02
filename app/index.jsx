@@ -205,9 +205,24 @@ const Home = () => {
           <MaterialCommunityIcons name="discord" size={20} color="#fff" />
         </TouchableOpacity>
       </View>
-      <Link href="/about" style={style.button}>
-        <Text style={style.textAbout}>About subject</Text>
-      </Link>
+
+      <View style={style.button}>
+        <Link href="/about" style={style.LinkFont}>
+          <Text>About</Text>
+        </Link>
+
+        <Link href="/book" style={style.LinkFont}>
+          <Text>Books</Text>
+        </Link>
+
+        <Link href="/signin" style={style.LinkFont}>
+          <Text>Signin</Text>
+        </Link>
+
+        <Link href="/signup" style={style.LinkFont}>
+          <Text>Signup</Text>
+        </Link>
+      </View>
     </View>
   );
 };
@@ -541,13 +556,19 @@ const style = StyleSheet.create({
     borderRadius: 70,
   },
 
-  // button | About us
+  // button | About us, book, signin, signup
   button: {
     marginTop: 27,
     padding: 10,
     paddingLeft: 25,
     // height: 150,
     backgroundColor: "#007BFF",
+    color: "#fff",
+    flexDirection: "row",
+    gap: 10,
+  },
+
+  LinkFont: {
     color: "#fff",
   },
 });
